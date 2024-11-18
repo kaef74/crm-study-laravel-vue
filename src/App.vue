@@ -6,6 +6,7 @@
       @openModal="showModal = true"
     />
     <section class="window__content">
+      <TheNavigation v-if="isNavigationVisible" />
       <router-view @openModal="showModal = true" />
     </section>
     <TheRegistration
@@ -19,17 +20,20 @@
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
+import TheNavigation from "./components/TheNavigation.vue";
 import TheRegistration from "./components/TheRegistration.vue";
 
 export default {
   components: {
     TheHeader,
+    TheNavigation,
     TheRegistration,
   },
   data() {
     return {
       showModal: false,
       isAuthorized: false,
+      isNavigationVisible: false, // Скрываем навигацию по умолчанию
       userData: null,
     };
   },
@@ -40,12 +44,12 @@ export default {
     goToSystem() {
       this.showModal = false;
       this.isAuthorized = true;
+      this.isNavigationVisible = true; // Показываем навигацию
       this.$router.push("/system");
     },
     async loadUserData() {
       try {
         const response = await fetch("/data/data.json");
-
         this.userData = await response.json();
       } catch (error) {
         console.error("Ошибка загрузки данных пользователя:", error);
@@ -90,6 +94,10 @@ a {
   background-color: #FFFFFF;
   box-shadow: 0 4px 8px rgba(0,0,0,0.25);
   padding: 25px;
+}
+
+.window__content {
+  display: flex;
 }
 
 
