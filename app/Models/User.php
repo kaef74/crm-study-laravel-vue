@@ -33,7 +33,7 @@ final class User extends Authenticatable
     use Notifiable;
     use SoftDeletes;
 
-    /** @var string<int,string> */
+    /** @var array<int,string> */
     protected $fillable = [
         'name',
         'email',
@@ -42,7 +42,7 @@ final class User extends Authenticatable
         'email_verified_at',
     ];
 
-    /** @var string<int,string> */
+    /** @var array<int,string> */
     protected $hidden = [
         'password',
         'remember_token',

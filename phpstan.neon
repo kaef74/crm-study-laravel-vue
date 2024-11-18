@@ -2,8 +2,7 @@ parameters:
     paths:
         - app/
 
-    level: 9
+    level: 1
+
     ignoreErrors: []
     excludePaths: []
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
