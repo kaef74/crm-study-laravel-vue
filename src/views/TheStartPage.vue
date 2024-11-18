@@ -53,11 +53,11 @@
   
   .button-create {
     width: 200px;
-    height: 50px;
+    height: 40px;
     border-radius: 10px;
     background-color: #80b7ff;
     color: #FFFFFF;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     transition: background-color 0.3s;
   }
@@ -65,12 +65,12 @@
   .button-about {
     border-radius: 10px;
     width: auto;
-    height: 50px;
+    height: 40px;
     padding: 0 20px;
     background-color: #FFF;
     border: 1px solid #E6E6E6;
     transition: border 0.3s, color 0.3s;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     color: #A2A2A2;
   }

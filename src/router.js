@@ -1,24 +1,23 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from './views/Home.vue';
-import Login from './views/Login.vue';
-import TheDashboard from './components/TheDashboard.vue';
-import TheSchedule from './components/TheSchedule.vue';
-import ThePerformance from './components/ThePerformance.vue';
-
-Vue.use(VueRouter);
+import { createRouter, createWebHistory } from 'vue-router';
+import TheStartPage from '@/views/TheStartPage.vue';
+import TheSystem from '@/views/TheSystem.vue';
 
 const routes = [
-  { path: '/', component: Home },
-  { path: '/login', component: Login },
-  { path: '/dashboard', component: TheDashboard },
-  { path: '/schedule', component: TheSchedule },
-  { path: '/performance', component: ThePerformance }
+  {
+    path: '/',
+    name: 'StartPage',
+    component: TheStartPage,
+  },
+  {
+    path: '/system',
+    name: 'System',
+    component: TheSystem,
+  },
 ];
 
-const router = new VueRouter({
-  mode: 'history',
-  routes
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
 });
 
 export default router;

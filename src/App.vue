@@ -1,32 +1,60 @@
 <template>
   <div class="window">
-    <TheHeader @openModal="showModal = true" />
+    <TheHeader
+      :isAuthorized="isAuthorized"
+      :userData="userData"
+      @openModal="showModal = true"
+    />
     <section class="window__content">
-      <TheStartPage @openModal="showModal = true" />
+      <router-view @openModal="showModal = true" />
     </section>
-    <TheRegistration :visible="showModal" @close="showModal = false" />
+    <TheRegistration
+      :visible="showModal"
+      @close="showModal = false"
+      @continue="goToSystem"
+    />
   </div>
   <p class="copyright">© Menteos</p>
 </template>
 
 <script>
-import TheHeader from './components/TheHeader.vue';
-import TheStartPage from './views/TheStartPage.vue';
-import TheRegistration from './components/TheRegistration.vue';
+import TheHeader from "./components/TheHeader.vue";
+import TheRegistration from "./components/TheRegistration.vue";
 
 export default {
   components: {
     TheHeader,
-    TheStartPage,
-    TheRegistration
+    TheRegistration,
   },
   data() {
     return {
-      showModal: false, 
+      showModal: false,
+      isAuthorized: false,
+      userData: null,
     };
-  }
+  },
+  mounted() {
+    this.loadUserData();
+  },
+  methods: {
+    goToSystem() {
+      this.showModal = false;
+      this.isAuthorized = true;
+      this.$router.push("/system");
+    },
+    async loadUserData() {
+      try {
+        const response = await fetch("/data/data.json");
+
+        this.userData = await response.json();
+      } catch (error) {
+        console.error("Ошибка загрузки данных пользователя:", error);
+      }
+    },
+  },
 };
 </script>
+
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -51,13 +79,17 @@ h1 {
   padding-bottom: 40px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .window {
   width: 1280px;
   height: 700px;
   border-radius: 30px;
   background-color: #FFFFFF;
   box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-  padding: 30px;
+  padding: 25px;
 }
 
 
@@ -74,7 +106,7 @@ button {
 
 .copyright {
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 10px;
   color: #A2A2A2;
 }
 
