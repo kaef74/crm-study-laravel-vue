@@ -29,7 +29,7 @@ return new class() extends Migration
                 ->cascadeOnDelete();
 
             $table
-                ->foreignId('service_id')
+                ->foreignUlid('service_id')
                 ->index()
                 ->constrained('services')
                 ->cascadeOnDelete();
