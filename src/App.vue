@@ -1,9 +1,10 @@
 <template>
   <div class="window">
-    <TheHeader />
+    <TheHeader @openModal="showModal = true" />
     <section class="window__content">
-      <TheStartPage />
+      <TheStartPage @openModal="showModal = true" />
     </section>
+    <TheRegistration :visible="showModal" @close="showModal = false" />
   </div>
   <p class="copyright">© Menteos</p>
 </template>
@@ -11,16 +12,21 @@
 <script>
 import TheHeader from './components/TheHeader.vue';
 import TheStartPage from './views/TheStartPage.vue';
+import TheRegistration from './components/TheRegistration.vue';
 
 export default {
   components: {
-    TheHeader, TheStartPage
+    TheHeader,
+    TheStartPage,
+    TheRegistration
+  },
+  data() {
+    return {
+      showModal: false, 
+    };
   }
-}
-
-
+};
 </script>
-
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
