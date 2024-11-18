@@ -10,12 +10,24 @@
         </h2>
         <form @submit.prevent="handleContinue">
           <label class="modal__label">
-            Имя администратора:
+            Логин администратора:
             <input
               class="modal__input"
               autocomplete="new-password"
               type="text"
-              placeholder="Введите имя"
+              placeholder="Введите логин"
+              required
+              value="admin"
+              readonly
+            />
+          </label>
+          <label class="modal__label">
+            Почта:
+            <input
+              class="modal__input"
+              autocomplete="new-password"
+              type="email"
+              placeholder="Введите почту"
               required
             />
           </label>

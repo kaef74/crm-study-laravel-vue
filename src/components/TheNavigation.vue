@@ -32,7 +32,6 @@ export default {
         return {
             navigationItems: [
                 { name: "main", label: "Главная" },
-                { name: "university", label: "Институт" },
                 { name: "cathedra", label: "Кафедры" },
                 { name: "directions", label: "Направления" },
                 { name: "teachers", label: "Преподаватели" },
