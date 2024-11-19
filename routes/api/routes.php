@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('v1')->group(static function (): void {
+Route::prefix('v1')->as('v1:')->group(static function (): void {
     Route::get('/', fn () => response()->json(request()->route()))->middleware(['sunset:' . now()->subDays(3)]);
 
     Route::middleware(['throttle:api'])->group(static function (): void {
