@@ -19,8 +19,8 @@ final class ErrorFactory
     public static function create(Throwable $exception, Request $request): ErrorResponse
     {
         return match ($exception::class) {
-             NotFoundHttpException::class,
-             ModelNotFoundException::class => new ErrorResponse(
+            NotFoundHttpException::class,
+            ModelNotFoundException::class => new ErrorResponse(
                 data: new ApiError(
                     title: 'Resource not found.',
                     detail: 'The resource you are looking for does not exist.',
